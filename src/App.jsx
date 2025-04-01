@@ -5,27 +5,27 @@ import { Linkedin, Instagram, Phone, Mail, MapPin, Download, ChevronDown, Coffee
 
 // --- Image URL Mapping ---
 const images = {
-  hero: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/hero_highlands_pano_mist.png', // Using the panoramic highlands image
-  solutionHands: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/solution_hands_seedling_soil.png',
-  qualitySeal: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/image_quality_seal.png',
-  globalRoutes: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/image_global_routes.png',
-  partnershipLeaf: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/image_partnership_leaf.png',
-  expertiseCompass: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/image_expertise_compass.png',
-  yirgacheffe: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/coffee_region_yirgacheffe_misty.png',
-  guji: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/coffee_region_guji_landscape_beans.png',
-  sidama: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/coffee_region_sidama_grove_sunlight.png',
-  limu: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/coffee_region_limu_shaded_plantation.png',
-  processPicking: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/process_picking_cherries_hand.png',
-  processWashed: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/process_washed_beans_water_channel.png', // Using washed process image
-  processSorting: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/process_sorting_hands_beans_table.png',
-  processGrading: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/process_q_grading_cupping_bowls.png',
-  processExport: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/process_export_prep_burlap_sacks.png',
-  ethicalTraining: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/ethical_farmers_training_collaboration.png',
-  ethicalSchool: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/ethical_community_school_building.png',
-  ethicalWomen: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/ethical_women_sorting_beans_confident.png',
-  ethicalShade: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/ethical_environment_shade_trees.png',
-  founderPortrait: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/about_founder_abel_tesfaye_sunrise.png', // Using sunrise portrait
-  ctaBackground: 'https://raw.githubusercontent.com/bahircar/ecx/main/images/cta_background_roasted_beans_blur.png'
+  hero: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/hero_highlands_pano_mist.png', // Using the panoramic highlands image
+  solutionHands: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/solution_hands_seedling_soil.png',
+  qualitySeal: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/image_quality_seal.png',
+  globalRoutes: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/image_global_routes.png',
+  partnershipLeaf: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/image_partnership_leaf.png',
+  expertiseCompass: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/image_expertise_compass.png',
+  yirgacheffe: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/coffee_region_yirgacheffe_misty.png',
+  guji: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/coffee_region_guji_landscape_beans.png',
+  sidama: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/coffee_region_sidama_grove_sunlight.png',
+  limu: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/coffee_region_limu_shaded_plantation.png',
+  processPicking: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/process_picking_cherries_hand.png',
+  processWashed: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/process_washed_beans_water_channel.png', // Using washed process image
+  processSorting: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/process_sorting_hands_beans_table.png',
+  processGrading: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/process_q_grading_cupping_bowls.png',
+  processExport: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/process_export_prep_burlap_sacks.png',
+  ethicalTraining: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/ethical_farmers_training_collaboration.png',
+  ethicalSchool: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/ethical_community_school_building.png',
+  ethicalWomen: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/ethical_women_sorting_beans_confident.png',
+  ethicalShade: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/ethical_environment_shade_trees.png',
+  founderPortrait: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/about_founder_abel_tesfaye_sunrise.png', // Using sunrise portrait
+  ctaBackground: 'https://raw.githubusercontent.com/execoffex/ecx/main/images/cta_background_roasted_beans_blur.png'
 };
 
 // --- Helper Components ---
