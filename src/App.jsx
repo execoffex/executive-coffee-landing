@@ -194,7 +194,7 @@ const Header = ({ isScrolled, isMobileMenuOpen, toggleMobileMenu }) => {
           ))}
           {/* Desktop Consultation Link (Styled Button) */}
           <LinkButton
-            href="mailto:info@executivecoffeeexport.com?subject=Consultation%20Request"
+            href="mailto:info@executive-export.com?subject=Consultation%20Request"
             // Dynamically select variant based on scroll state
             variant={isScrolled ? 'headerOutlineScrolled' : 'headerOutlineNotScrolled'}
             size="sm"
@@ -237,7 +237,7 @@ const MobileMenu = ({ isOpen, toggleMenu }) => {
       ))}
       {/* Consultation Link (Styled Button) */}
       <LinkButton
-        href="mailto:info@executivecoffeeexport.com?subject=Consultation%20Request"
+        href="mailto:info@executive-export.com?subject=Consultation%20Request"
         variant="mobileMenuOutline"
         size="lg"
         className="mt-6" // Add margin specific to this instance
@@ -266,7 +266,7 @@ const Hero = () => {
           Partner with Executive Coffee for meticulously sourced Grade 1 Ethiopian Arabica. Uncompromising quality, full traceability, and reliable delivery – direct from the cradle of coffee.
         </h2>
         {/* Primary CTA Link */}
-        <LinkButton href="mailto:info@executivecoffeeexport.com?subject=Consultation%20Request" variant="primary" size="lg">
+        <LinkButton href="mailto:info@executive-export.com?subject=Consultation%20Request" variant="primary" size="lg">
           Request a Consultation
         </LinkButton>
         <p className="text-xs mt-2 opacity-80">Let's discuss your specific needs.</p>
@@ -420,7 +420,7 @@ const OurCoffees = () => {
           <p className="text-md font-sans mb-6 text-[#4A2C2A]/80">
             *Certified Organic* and *Fair Trade* selections available. Inquire for exclusive micro-lots and unique experimental process offerings.
           </p>
-          <LinkButton href="mailto:info@executivecoffeeexport.com?subject=Offerings%20and%20Samples%20Request" variant="outline" size="lg">
+          <LinkButton href="mailto:info@executive-export.com?subject=Offerings%20and%20Samples%20Request" variant="outline" size="lg">
             Request Current Offerings & Samples
           </LinkButton>
         </div>
@@ -543,10 +543,10 @@ const CallToAction = () => {
         </p>
         {/* CTA Links (Styled Buttons) */}
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-          <LinkButton href="mailto:info@executivecoffeeexport.com?subject=Personal%20Consultation%20Request" variant="finalCtaPrimary" size="lg">
+          <LinkButton href="mailto:info@executive-export.com?subject=Personal%20Consultation%20Request" variant="finalCtaPrimary" size="lg">
             Request Your Personal Consultation
           </LinkButton>
-          <LinkButton href="mailto:info@executivecoffeeexport.com?subject=Green%20Bean%20Sample%20Request" variant="finalCtaOutline" size="lg">
+          <LinkButton href="mailto:info@executive-export.com?subject=Green%20Bean%20Sample%20Request" variant="finalCtaOutline" size="lg">
             Request Green Bean Samples
           </LinkButton>
         </div>
@@ -593,9 +593,9 @@ const Footer = () => {
           <div>
             <h5 className="font-semibold text-[#FAF0E6] mb-3 font-serif tracking-wide">Contact Us</h5>
             <ul className="space-y-2 text-sm">
-              <li><a href="mailto:info@executivecoffeeexport.com?subject=Consultation%20Request" className="inline-flex items-center hover:text-[#B08D57] transition-colors"><Mail size={14} className="mr-2" /> Request Consultation</a></li>
-              <li><a href="mailto:sales@executivecoffeeexport.com" className="inline-flex items-center hover:text-[#B08D57] transition-colors"><Mail size={14} className="mr-2" /> sales@executivecoffeeexport.com</a></li>
-              <li><a href="mailto:info@executivecoffeeexport.com" className="inline-flex items-center hover:text-[#B08D57] transition-colors"><Mail size={14} className="mr-2" /> info@executivecoffeeexport.com</a></li>
+              <li><a href="mailto:info@executive-export.com?subject=Consultation%20Request" className="inline-flex items-center hover:text-[#B08D57] transition-colors"><Mail size={14} className="mr-2" /> Request Consultation</a></li>
+              <li><a href="mailto:sales@executive-export.com" className="inline-flex items-center hover:text-[#B08D57] transition-colors"><Mail size={14} className="mr-2" /> sales@executive-export.com</a></li>
+              <li><a href="mailto:info@executive-export.com" className="inline-flex items-center hover:text-[#B08D57] transition-colors"><Mail size={14} className="mr-2" /> info@executive-export.com</a></li>
               <li><a href="tel:+251935993536" className="inline-flex items-center hover:text-[#B08D57] transition-colors"><Phone size={14} className="mr-2" /> +251 935 993 536 (WhatsApp)</a></li>
               <li><span className="inline-flex items-center"><MapPin size={14} className="mr-2" /> Bole Sub-City, Addis Ababa, Ethiopia</span></li>
               <li><span className="inline-flex items-center"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="mr-2"><path d="M12 0c-6.627 0-12 4.975-12 11.111 0 3.497 1.793 6.605 4.571 8.651-.162.844-.56 2.443-.983 3.817-.158.51.171.818.611.628 2.188-.93 4.124-2.413 5.469-3.719 1.101.193 2.24.299 3.404.299 6.627 0 12-4.975 12-11.111s-5.373-11.111-12-11.111zm-1.214 14.941c-.303 0-.582-.117-.797-.333l-1.138-1.138c-.429-.43-.429-1.125 0-1.554s1.125-.43 1.554 0l.818.818 2.818-2.818c.43-.43 1.125-.43 1.554 0s.43 1.125 0 1.554l-3.446 3.446c-.214.215-.493.333-.797.333zm6.428 0c-.303 0-.582-.117-.797-.333l-1.138-1.138c-.429-.43-.429-1.125 0-1.554s1.125-.43 1.554 0l.818.818 2.818-2.818c.43-.43 1.125-.43 1.554 0s.43 1.125 0 1.554l-3.446 3.446c-.214.215-.493.333-.797.333z" /></svg> WeChat: ExecutiveCoffeeETH</span></li>
