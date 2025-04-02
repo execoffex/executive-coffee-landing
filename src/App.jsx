@@ -5,27 +5,27 @@ import { Linkedin, Instagram, Phone, Mail, MapPin, Download, ChevronDown, Coffee
 
 // --- Image URL Mapping ---
 const images = {
-  hero: '/images/hero_highlands_pano_mist.png',
-  solutionHands: '/images/solution_hands_seedling_soil.png',
-  qualitySeal: '/images/image_quality_seal.png',
-  globalRoutes: '/images/image_global_routes.png',
-  partnershipLeaf: '/images/image_partnership_leaf.png',
-  expertiseCompass: '/images/image_expertise_compass.png',
-  yirgacheffe: '/images/coffee_region_yirgacheffe_misty.png',
-  guji: '/images/coffee_region_guji_landscape_beans.png',
-  sidama: '/images/coffee_region_sidama_grove_sunlight.png',
-  limu: '/images/coffee_region_limu_shaded_plantation.png',
-  processPicking: '/images/process_picking_cherries_hand.png',
-  processWashed: '/images/process_washed_beans_water_channel.png',
-  processSorting: '/images/process_sorting_hands_beans_table.png',
-  processGrading: '/images/process_q_grading_cupping_bowls.png',
-  processExport: '/images/process_export_prep_burlap_sacks.png',
-  ethicalTraining: '/images/ethical_farmers_training_collaboration.png',
-  ethicalSchool: '/images/ethical_community_school_building.png',
-  ethicalWomen: '/images/ethical_women_sorting_beans_confident.png',
-  ethicalShade: '/images/ethical_environment_shade_trees.png',
-  founderPortrait: '/images/about_founder_abel_tesfaye_sunrise.png',
-  ctaBackground: '/images/cta_background_roasted_beans_blur.png'
+  hero: 'images/hero_highlands_pano_mist.png',
+  solutionHands: 'images/solution_hands_seedling_soil.png',
+  qualitySeal: 'images/image_quality_seal.png',
+  globalRoutes: 'images/image_global_routes.png',
+  partnershipLeaf: 'images/image_partnership_leaf.png',
+  expertiseCompass: 'images/image_expertise_compass.png',
+  yirgacheffe: 'images/coffee_region_yirgacheffe_misty.png',
+  guji: 'images/coffee_region_guji_landscape_beans.png',
+  sidama: 'images/coffee_region_sidama_grove_sunlight.png',
+  limu: 'images/coffee_region_limu_shaded_plantation.png',
+  processPicking: 'images/process_picking_cherries_hand.png',
+  processWashed: 'images/process_washed_beans_water_channel.png',
+  processSorting: 'images/process_sorting_hands_beans_table.png',
+  processGrading: 'images/process_q_grading_cupping_bowls.png',
+  processExport: 'images/process_export_prep_burlap_sacks.png',
+  ethicalTraining: 'images/ethical_farmers_training_collaboration.png',
+  ethicalSchool: 'images/ethical_community_school_building.png',
+  ethicalWomen: 'images/ethical_women_sorting_beans_confident.png',
+  ethicalShade: 'images/ethical_environment_shade_trees.png',
+  founderPortrait: 'images/about_founder_abel_tesfaye_sunrise.png',
+  ctaBackground: 'images/cta_background_roasted_beans_blur.png'
 };
 // --- Helper Components ---
 
