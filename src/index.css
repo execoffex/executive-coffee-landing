@@ -1,13 +1,19 @@
+/* CORRECT STRUCTURE */
+
+/* Import Google Fonts FIRST */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+
+/* Then include Tailwind directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Optional: Add base styles or font imports here */
+/* Then include any custom base styles */
 body {
   font-family: 'Source Sans Pro', sans-serif; /* Example default */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Add other base body styles if needed */
 }
 
-/* Import Google Fonts if needed */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+/* Add any other custom CSS classes or rules below */
