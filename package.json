@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://execoffex.github.io/executive-coffee-landing",
+  "homepage": "https://www.executive-export.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
