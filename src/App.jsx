@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-// Import Lucide icons (assuming lucide-react is installed)
-// You might need to install it: npm install lucide-react
-import { Linkedin, Instagram, Phone, Mail, MapPin, Download, ChevronDown, Coffee, Leaf, Globe, Users, Award, Ship, Droplet, Sun, Wind } from 'lucide-react';
+// Import Lucide icons
+import { Linkedin, Instagram, Phone, Mail, MapPin, Download, ChevronDown, Leaf, Droplet, Sun, Wind, Menu, X } from 'lucide-react';
 
-// --- Image URL Mapping ---
+// --- Local Image Path Mapping ---
+// Assumes images are placed in the 'publicimages/' directory
 const images = {
   hero: 'images/hero_highlands_pano_mist.png',
   solutionHands: 'images/solution_hands_seedling_soil.png',
@@ -27,24 +27,34 @@ const images = {
   founderPortrait: 'images/about_founder_abel_tesfaye_sunrise.png',
   ctaBackground: 'images/cta_background_roasted_beans_blur.png'
 };
+
+
 // --- Helper Components ---
 
-// Button Component (Simulating shadcn/ui style)
+/**
+ * Button Component
+ * Renders a styled button with different variants and sizes.
+ * Simulates shadcn/ui button style using Tailwind CSS.
+ */
 const Button = ({ children, variant = 'primary', size = 'default', className = '', ...props }) => {
+  // Base styles applicable to all buttons
   const baseStyles = 'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none';
+  // Styles specific to button variants
   const variantStyles = {
     primary: 'bg-[#B08D57] text-[#4A2C2A] hover:bg-[#a8834f] focus-visible:ring-[#B08D57]', // Refined Gold/Bronze
     outline: 'border border-[#B08D57] text-[#B08D57] hover:bg-[#B08D57]/10', // Refined Gold/Bronze Outline
     secondaryOutline: 'border border-[#A42A28] text-[#A42A28] hover:bg-[#A42A28]/10', // Muted Coffee Cherry Red Outline
-    ghost: 'hover:bg-accent hover:text-accent-foreground',
+    ghost: 'hover:bg-accent hover:text-accent-foreground', // Simple hover effect
   };
+  // Styles specific to button sizes
   const sizeStyles = {
     default: 'h-10 py-2 px-4',
     sm: 'h-9 px-3 rounded-md',
     lg: 'h-11 px-8 rounded-md text-base', // Larger for primary CTAs
-    icon: 'h-10 w-10',
+    icon: 'h-10 w-10', // For icon-only buttons
   };
 
+  // Combine styles and render the button element
   return (
     <button
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
@@ -55,37 +65,77 @@ const Button = ({ children, variant = 'primary', size = 'default', className = '
   );
 };
 
-// Card Component (Simulating shadcn/ui style)
+/**
+ * Card Component - Container
+ * Renders a styled card container.
+ * Simulates shadcn/ui card style using Tailwind CSS.
+ */
 const Card = ({ children, className = '', ...props }) => (
-  <div className={`rounded-lg border bg-card text-card-foreground shadow-sm ${className} bg-white/50 backdrop-blur-sm`} {...props}>
+  <div className={`rounded-lg border border-black/10 bg-card text-card-foreground shadow-sm ${className} bg-white/50 backdrop-blur-sm`} {...props}>
     {children}
   </div>
 );
+// Card Header Component
 const CardHeader = ({ children, className = '', ...props }) => <div className={`flex flex-col space-y-1.5 p-6 ${className}`} {...props}>{children}</div>;
+// Card Title Component
 const CardTitle = ({ children, className = '', as = 'h3', ...props }) => {
-  const Tag = as;
+  const Tag = as; // Allows specifying heading level (h3, h4, etc.)
   return <Tag className={`text-lg font-semibold leading-none tracking-tight font-serif text-[#4A2C2A] ${className}`} {...props}>{children}</Tag>;
 };
+// Card Description Component
 const CardDescription = ({ children, className = '', ...props }) => <p className={`text-sm text-[#4A2C2A]/80 font-sans ${className}`} {...props}>{children}</p>;
+// Card Content Component
 const CardContent = ({ children, className = '', ...props }) => <div className={`p-6 pt-0 ${className}`} {...props}>{children}</div>;
+// Card Footer Component
 const CardFooter = ({ children, className = '', ...props }) => <div className={`flex items-center p-6 pt-0 ${className}`} {...props}>{children}</div>;
 
 
 // --- Main App Component ---
 
 function App() {
+  // State to track if the page has been scrolled
   const [isScrolled, setIsScrolled] = useState(false);
+  // State to track if the mobile navigation menu is open
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Handle scroll effect for header
+  // Effect to handle scroll detection for header styling
+  // Also handles body scroll locking when mobile menu is open
   useEffect(() => {
+    // Function to update scroll state
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 50); // Set true if scrolled more than 50px
     };
+    // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
-  // --- Section Data ---
+    // Lock body scroll when mobile menu is open, unlock otherwise
+    if (isMobileMenuOpen) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup function: remove listener and ensure scroll is unlocked
+    return () => {
+        window.removeEventListener('scroll', handleScroll);
+        document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]); // Re-run effect if mobile menu state changes
+
+  // Function to toggle the mobile menu state
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  // Data for navigation links
+  const navLinks = [
+    { name: 'Our Coffees', href: '#our-coffees' },
+    { name: 'Our Commitment', href: '#our-commitment' },
+    { name: 'The Executive Difference', href: '#the-executive-difference' },
+    { name: 'Contact', href: '#contact' },
+  ];
+
+  // Data for coffee regions (used in Section 4)
   const coffeeRegions = [
     { name: 'Yirgacheffe', image: images.yirgacheffe, profile: 'Ethereal & Citrus', notes: 'Jasmine, bergamot, lemon zest, light body, sparkling acidity.', processing: ['Washed', 'Natural'], score: '87-90+', altitude: '1700-2200m' },
     { name: 'Guji', image: images.guji, profile: 'Complex & Berry-Forward', notes: 'Blueberry, dark chocolate, floral hints, winey acidity, syrupy body.', processing: ['Washed', 'Natural', 'Honey'], score: '86-89+', altitude: '1800-2300m' },
@@ -93,14 +143,16 @@ function App() {
     { name: 'Limu', image: images.limu, profile: 'Gentle & Spiced', notes: 'Mild spice, floral notes, rounded body, soft acidity, clean finish.', processing: ['Washed', 'Natural'], score: '84-87', altitude: '1400-2000m' },
   ];
 
+  // Data for processing steps (used in Section 5)
   const processSteps = [
       { title: 'Selective Hand-Picking', description: 'Ensuring only peak-ripeness cherries for optimal sweetness.', image: images.processPicking },
-      { title: 'Precision Processing', description: 'Tailoring Washed, Natural, or Honey methods to unlock each bean\'s potential.', image: images.processWashed }, // Example shows washed
+      { title: 'Precision Processing', description: 'Tailoring Washed, Natural, or Honey methods to unlock each bean\'s potential.', image: images.processWashed },
       { title: 'Multi-Stage Sorting', description: 'Removing imperfections by density, size, and hand-selection for uniformity.', image: images.processSorting },
       { title: 'Expert Q-Grading', description: 'Sensory analysis by certified Q-graders to guarantee quality and consistency.', image: images.processGrading },
       { title: 'Protective Export Prep', description: 'Preserving quality through GrainPro or equivalent liners and meticulous logistics.', image: images.processExport },
   ];
 
+  // Data for ethical sourcing images (used in Section 6)
   const ethicalImages = [
       { src: images.ethicalTraining, alt: 'Farmers collaborating during training' },
       { src: images.ethicalSchool, alt: 'School funded by coffee premiums' },
@@ -108,46 +160,99 @@ function App() {
       { src: images.ethicalShade, alt: 'Environmental conservation with shade trees' },
   ];
 
-  // --- Render ---
+  // --- Render JSX ---
   return (
-    <div className="bg-[#FAF0E6] text-[#4A2C2A] font-sans antialiased"> {/* Creamy Off-White base */}
-      {/* --- Header --- */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-[#4A2C2A]/90 backdrop-blur-sm shadow-md' : 'bg-transparent'}`}>
+    // Main container with base background and text colors
+    <div className="bg-[#FAF0E6] text-[#4A2C2A] font-sans antialiased">
+
+      {/* --- Header Section --- */}
+      <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? 'bg-[#4A2C2A]/90 backdrop-blur-sm shadow-md' : 'bg-transparent'}`}>
         <nav className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
-          {/* Logo Placeholder */}
-          <a href="#" className={`text-xl font-bold font-serif ${isScrolled ? 'text-[#FAF0E6]' : 'text-[#B08D57]'}`}>
+          {/* Logo */}
+          <a href="#" className={`text-xl font-bold font-serif transition-colors ${isScrolled ? 'text-[#FAF0E6]' : 'text-[#B08D57]'}`}>
             Executive Coffee
           </a>
-          {/* Desktop Navigation */}
+
+          {/* Desktop Navigation Links */}
           <div className="hidden md:flex space-x-6 items-center">
-            {['Our Coffees', 'Our Commitment', 'The Executive Difference', 'Contact'].map((item) => (
+            {navLinks.map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase().replace(/ /g, '-')}`}
+                key={item.name}
+                href={item.href}
                 className={`text-sm font-medium transition-colors ${isScrolled ? 'text-[#FAF0E6] hover:text-[#B08D57]' : 'text-[#4A2C2A] hover:text-[#B08D57]'}`}
               >
-                {item}
+                {item.name}
               </a>
             ))}
+             {/* Desktop Consultation Button */}
              <Button variant="outline" size="sm" className={`ml-4 ${isScrolled ? 'border-[#FAF0E6] text-[#FAF0E6] hover:bg-[#FAF0E6]/10' : 'border-[#B08D57] text-[#B08D57] hover:bg-[#B08D57]/10'}`}>
                 Request Consultation
              </Button>
           </div>
-          {/* Mobile Menu Button Placeholder */}
+
+          {/* Mobile Menu Button (Hamburger/X Icon) */}
           <div className="md:hidden">
-            <button className={`p-2 rounded-md ${isScrolled ? 'text-[#FAF0E6]' : 'text-[#4A2C2A]'}`}>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              </svg>
+            <button
+                onClick={toggleMobileMenu} // Toggles mobile menu visibility
+                className={`p-2 rounded-md transition-colors ${isScrolled ? 'text-[#FAF0E6]' : 'text-[#4A2C2A]'}`}
+                aria-label="Toggle menu" // Accessibility label
+            >
+                {/* Show X icon if menu is open, otherwise show Menu (hamburger) icon */}
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </nav>
       </header>
 
-      <main>
-        {/* --- 1. Hero Section --- */}
+      {/* --- Mobile Menu Overlay --- */}
+      {/* Conditionally render the overlay based on state */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 bg-[#4A2C2A]/95 backdrop-blur-sm z-50 flex flex-col items-center justify-center space-y-8 md:hidden">
+           {/* Close button positioned at top right */}
+           <button
+                onClick={toggleMobileMenu} // Closes the menu
+                className="absolute top-4 right-4 p-2 text-[#FAF0E6] rounded-md"
+                aria-label="Close menu" // Accessibility label
+           >
+               <X size={28} />
+           </button>
+
+           {/* Mobile Navigation Links */}
+           {navLinks.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-2xl font-medium text-[#FAF0E6] hover:text-[#B08D57] transition-colors"
+                onClick={toggleMobileMenu} // Close menu when a link is clicked
+              >
+                {item.name}
+              </a>
+            ))}
+
+            {/* Mobile Consultation Button */}
+            <Button
+                variant="outline"
+                size="lg"
+                className="border-[#FAF0E6] text-[#FAF0E6] hover:bg-[#FAF0E6]/10 mt-6"
+                onClick={() => {
+                    // Simple navigation to contact section
+                    toggleMobileMenu(); // Close menu first
+                    window.location.href = '#contact';
+                }}
+            >
+                Request Consultation
+            </Button>
+        </div>
+      )}
+
+      {/* --- Main Content Area --- */}
+      {/* Apply blur effect if mobile menu is open */}
+      <main className={`${isMobileMenuOpen ? 'blur-sm' : ''} transition-filter duration-300`}>
+
+        {/* --- Section 1: Hero --- */}
         <section id="hero" className="relative h-screen flex items-center justify-center text-center bg-cover bg-center" style={{ backgroundImage: `url(${images.hero})` }}>
-          <div className="absolute inset-0 bg-black/50"></div> {/* Dark overlay */}
+          {/* Dark overlay for text legibility */}
+          <div className="absolute inset-0 bg-black/50"></div>
           <div className="relative z-10 px-4 text-[#FAF0E6]">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-serif mb-4 tracking-wide" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.5)' }}>
               Ethiopia's Coffee Legacy. <span className="text-[#B08D57]">Elevated.</span>
@@ -155,21 +260,20 @@ function App() {
             <h2 className="text-lg sm:text-xl md:text-2xl font-sans max-w-3xl mx-auto mb-8 font-light" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
               Partner with Executive Coffee for meticulously sourced Grade 1 Ethiopian Arabica. Uncompromising quality, full traceability, and reliable delivery – direct from the cradle of coffee.
             </h2>
-            <Button size="lg">
+            {/* Hero CTA Button */}
+            <Button size="lg" onClick={() => window.location.href = '#contact'}>
               Request a Consultation
             </Button>
             <p className="text-xs mt-2 opacity-80">Let's discuss your specific needs.</p>
-            {/* Optional Trust Element */}
-            {/* <p className="text-sm mt-12 opacity-70">Trusted by leading specialty roasters globally.</p> */}
           </div>
-          {/* Subtle scroll down indicator */}
+          {/* Scroll down indicator */}
            <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-[#FAF0E6] opacity-70 animate-bounce">
              <ChevronDown size={24} />
            </div>
         </section>
 
-        {/* --- 2. The Challenge & The Executive Solution --- */}
-        <section id="challenge-solution" className="py-16 md:py-24 bg-[#FAF0E6]"> {/* Creamy Off-White */}
+        {/* --- Section 2: Challenge & Solution --- */}
+        <section id="challenge-solution" className="py-16 md:py-24 bg-[#FAF0E6]">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
             <h2 className="text-3xl md:text-4xl font-serif mb-6 text-[#4A2C2A]">
               Tired of the Gamble? The Search for Exceptional <span className="text-[#3A5A40]">and</span> Reliable Ethiopian Coffee Ends Here.
@@ -177,6 +281,7 @@ function App() {
             <p className="text-lg font-sans mb-12 text-[#4A2C2A]/80 leading-relaxed">
               Finding Ethiopian specialty coffee that consistently delivers on its promise – vibrant flavor, impeccable quality, ethical sourcing – is a challenge. Inconsistencies impact your roasts, your reputation, and your bottom line. You need more than a supplier; you need a dedicated partner grounded in origin.
             </p>
+            {/* Content split layout */}
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
                 <div className="md:w-1/2 text-left">
                     <h3 className="text-2xl md:text-3xl font-serif mb-4 text-[#4A2C2A]">
@@ -186,24 +291,21 @@ function App() {
                         Founded by Abel Tesfaye, raised amidst Hawassa's legendary coffee farms, we merge generations of indigenous knowledge with rigorous quality control and seamless logistics. We are curators of Ethiopia's finest, ensuring every bean reflects its noble heritage and arrives ready to elevate your craft.
                     </p>
                 </div>
+                {/* Image for the solution section */}
                 <div className="md:w-1/2">
                     <img src={images.solutionHands} alt="Hands tending to a coffee seedling" className="rounded-lg shadow-lg w-full h-auto object-cover aspect-[3/2]" loading="lazy" />
-                     {/* Placeholder for animated map:
-                     <div className="w-full h-64 bg-[#F5F5DC] rounded-lg flex items-center justify-center text-[#4A2C2A]/50">
-                         [Animated SVG Map Placeholder: Ethiopia -> Hawassa]
-                     </div>
-                     */}
                 </div>
             </div>
           </div>
         </section>
 
-        {/* --- 3. The Executive Difference (Value Proposition) --- */}
-        <section id="the-executive-difference" className="py-16 md:py-24 bg-[#F5F5DC]"> {/* Warm Beige */}
+        {/* --- Section 3: The Executive Difference (Value Props) --- */}
+        <section id="the-executive-difference" className="py-16 md:py-24 bg-[#F5F5DC]">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-serif text-center mb-12 md:mb-16 text-[#4A2C2A]">
               The Executive Difference: Why Partner With Us?
             </h2>
+            {/* 4-column grid for value propositions */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
               {/* Benefit 1: Quality */}
               <div className="text-center p-6 bg-[#FAF0E6] rounded-lg shadow-sm transition-shadow hover:shadow-md">
@@ -241,8 +343,8 @@ function App() {
           </div>
         </section>
 
-        {/* --- 4. Our Coffees: Ethiopia's Crown Jewels --- */}
-        <section id="our-coffees" className="py-16 md:py-24 bg-[#FAF0E6]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5F5DC' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`}}> {/* Subtle pattern */}
+        {/* --- Section 4: Our Coffees --- */}
+        <section id="our-coffees" className="py-16 md:py-24 bg-[#FAF0E6]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5F5DC' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`}}>
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-serif text-center mb-4 text-[#4A2C2A]">
               Discover the Crown Jewels of Ethiopian Coffee
@@ -251,17 +353,18 @@ function App() {
               Explore the distinct terroirs that make Ethiopian coffee legendary. We offer meticulously sourced single-origin lots, preserving the unique aromatic tapestry of each region.
             </p>
 
-            {/* Interactive Map Placeholder */}
+            {/* Placeholder for Interactive Map */}
             <div className="mb-12 p-6 bg-[#F5F5DC] rounded-lg shadow text-center text-[#4A2C2A]/60">
                 [Interactive Map Placeholder - Hotspots for Yirgacheffe, Guji, Sidama, Limu]
                 <br/>
                 <span className="text-sm italic">(On hover/click, show details below)</span>
             </div>
 
-            {/* Coffee Cards */}
+            {/* Grid of Coffee Region Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {coffeeRegions.map((region) => (
                 <Card key={region.name} className="overflow-hidden transition-transform transform hover:scale-[1.02] duration-300">
+                  {/* Region Image */}
                   <img src={region.image} alt={`${region.name} coffee region`} className="w-full h-48 object-cover" loading="lazy"/>
                   <CardHeader>
                     <CardTitle>{region.name}</CardTitle>
@@ -269,6 +372,7 @@ function App() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm font-sans text-[#4A2C2A]/80 mb-3">{region.notes}</p>
+                    {/* Details: Altitude, Score, Processing */}
                     <div className="text-xs font-sans text-[#4A2C2A]/70 space-y-1">
                         <p><strong>Altitude:</strong> {region.altitude}</p>
                         <p><strong>Score Range:</strong> {region.score}</p>
@@ -276,7 +380,7 @@ function App() {
                             <strong>Processing:</strong>
                             {region.processing.includes('Washed') && <Droplet size={14} title="Washed" />}
                             {region.processing.includes('Natural') && <Sun size={14} title="Natural" />}
-                            {region.processing.includes('Honey') && <Wind size={14} title="Honey" />} {/* Using Wind for Honey */}
+                            {region.processing.includes('Honey') && <Wind size={14} title="Honey" />} {/* Using Wind icon as placeholder for Honey */}
                         </div>
                     </div>
                   </CardContent>
@@ -284,6 +388,7 @@ function App() {
               ))}
             </div>
 
+            {/* Additional Info & CTA */}
             <div className="text-center mt-12">
               <p className="text-md font-sans mb-6 text-[#4A2C2A]/80">
                 *Certified Organic* and *Fair Trade* selections available. Inquire for exclusive micro-lots and unique experimental process offerings.
@@ -295,37 +400,41 @@ function App() {
           </div>
         </section>
 
-        {/* --- 5. Our Process: The Art & Science of Perfection --- */}
-        <section id="our-process" className="py-16 md:py-24 bg-[#FAF0E6]"> {/* Crisp Off-White */}
+        {/* --- Section 5: Our Process --- */}
+        <section id="our-process" className="py-16 md:py-24 bg-[#FAF0E6]">
            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
              <h2 className="text-3xl md:text-4xl font-serif text-center mb-12 md:mb-16 text-[#4A2C2A]">
                The Art & Science of Perfection: Our Meticulous Journey
              </h2>
+             {/* Horizontal progression layout for process steps */}
              <div className="relative flex flex-col md:flex-row items-start justify-between gap-8 md:gap-4 px-4">
-                {/* Connecting Line (for desktop) */}
+                {/* Connecting line for desktop view */}
                 <div className="hidden md:block absolute top-1/2 left-0 right-0 h-px bg-[#B08D57]/50 transform -translate-y-1/2" style={{top: 'calc(5rem)'}}></div>
 
+                {/* Map through process steps */}
                 {processSteps.map((step, index) => (
                     <div key={step.title} className="relative flex flex-col items-center text-center w-full md:w-1/5 z-10 mb-8 md:mb-0">
-                        {/* Dot on the line */}
+                        {/* Dot indicator on the line */}
                         <div className="hidden md:block w-4 h-4 bg-[#B08D57] rounded-full border-2 border-[#FAF0E6] mb-4" style={{marginTop: 'calc(5rem - 0.5rem)'}}></div>
-                        {/* Image */}
+                        {/* Step Image */}
                         <img src={step.image} alt={step.title} className="w-full h-40 object-cover rounded-lg shadow-md mb-4 border-2 border-[#F5F5DC]" loading="lazy"/>
-                        {/* Content */}
+                        {/* Step Title & Description */}
                         <h4 className="text-lg font-serif mb-1 text-[#4A2C2A]">{step.title}</h4>
                         <p className="text-sm font-sans text-[#A42A28] italic leading-relaxed">{step.description}</p>
                     </div>
                 ))}
              </div>
+             {/* Concluding text for the process section */}
              <p className="text-center mt-12 text-md font-sans max-w-2xl mx-auto text-[#4A2C2A]/80">
                From fertile soil to final shipment, every step is guided by a commitment to preserving the inherent quality and unique story of Ethiopian coffee.
              </p>
            </div>
         </section>
 
-        {/* --- 6. Ethical Sourcing: Investing in People & Planet --- */}
-        <section id="our-commitment" className="py-16 md:py-24 bg-[#F5F5DC]"> {/* Warm Beige */}
+        {/* --- Section 6: Ethical Sourcing --- */}
+        <section id="our-commitment" className="py-16 md:py-24 bg-[#F5F5DC]">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Layout with text and image grid */}
             <div className="flex flex-col lg:flex-row gap-12 items-center">
               {/* Text Content */}
               <div className="lg:w-1/2">
@@ -339,6 +448,7 @@ function App() {
                 <p className="text-md font-sans mb-8 text-[#4A2C2A]/80 leading-relaxed">
                   Know the source. Our traceable supply chain connects you directly to the origin, providing a powerful narrative of quality and positive impact for your brand and your customers.
                 </p>
+                {/* CTA for Impact Initiatives */}
                 <Button variant="secondaryOutline" size="default">
                   <Leaf size={16} className="mr-2"/> Learn About Our Impact Initiatives
                 </Button>
@@ -348,7 +458,7 @@ function App() {
                 {ethicalImages.map((img, index) => (
                   <img
                     key={index}
-                    src={img.src}
+                    src={img.src} // Use local path
                     alt={img.alt}
                     className="rounded-lg shadow-lg object-cover w-full h-48 transition-transform transform hover:scale-105 duration-300"
                     loading="lazy"
@@ -359,15 +469,19 @@ function App() {
           </div>
         </section>
 
-        {/* --- 7. Meet the Founder --- */}
-        <section id="meet-the-founder" className="py-16 md:py-24 bg-[#FAF0E6]"> {/* Clean Off-White */}
+        {/* --- Section 7: Meet the Founder --- */}
+        <section id="meet-the-founder" className="py-16 md:py-24 bg-[#FAF0E6]">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Layout with portrait and text */}
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+              {/* Founder Portrait */}
               <div className="md:w-1/3">
                 <img src={images.founderPortrait} alt="Abel Tesfaye, Founder" className="rounded-full shadow-xl w-64 h-64 md:w-full md:h-auto object-cover mx-auto border-4 border-[#F5F5DC]" loading="lazy"/>
               </div>
+              {/* Founder Info & Quote */}
               <div className="md:w-2/3 text-center md:text-left">
                 <h3 className="text-2xl md:text-3xl font-serif mb-4 text-[#4A2C2A]">Rooted in Hawassa, Reaching the World</h3>
+                {/* Founder Quote */}
                 <blockquote className="text-xl md:text-2xl font-sans italic text-[#4A2C2A]/70 border-l-4 border-[#B08D57] pl-4 py-2 my-6">
                   "Coffee is more than a crop here; it's our heritage. My mission is to share its finest expression with the world, with integrity and respect for its origins."
                   <span className="block text-right text-lg not-italic mt-2">– Abel Tesfaye, Founder</span>
@@ -380,9 +494,10 @@ function App() {
           </div>
         </section>
 
-        {/* --- 8. Final Call to Action --- */}
+        {/* --- Section 8: Final Call to Action --- */}
         <section id="contact" className="py-20 md:py-28 text-center bg-cover bg-center relative" style={{ backgroundImage: `url(${images.ctaBackground})` }}>
-           <div className="absolute inset-0 bg-[#4A2C2A]/80"></div> {/* Rich Deep Coffee Brown overlay */}
+           {/* Dark overlay */}
+           <div className="absolute inset-0 bg-[#4A2C2A]/80"></div>
            <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 text-[#FAF0E6]">
              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold mb-6" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>
                Partner with Ethiopia's Premier Coffee Exporter
@@ -390,6 +505,7 @@ function App() {
              <p className="text-lg md:text-xl font-sans max-w-3xl mx-auto mb-10 font-light" style={{ textShadow: '1px 1px 1px rgba(0,0,0,0.3)' }}>
                Ready to secure exceptional Ethiopian specialty coffee that delights your customers and builds your brand? Connect with our experts to explore tailored solutions, request samples, or receive a detailed quote.
              </p>
+             {/* CTA Buttons */}
              <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
                <Button size="lg" className="w-full sm:w-auto">
                  Request Your Personal Consultation
@@ -398,6 +514,7 @@ function App() {
                  Request Green Bean Samples
                </Button>
              </div>
+             {/* Optional Download Link */}
              <a href="#download-profile" className="inline-flex items-center text-sm mt-8 text-[#FAF0E6]/80 hover:text-[#B08D57] transition-colors">
                 <Download size={16} className="mr-2"/> Download Company Profile (PDF)
              </a>
@@ -405,11 +522,12 @@ function App() {
         </section>
       </main>
 
-      {/* --- 9. Footer --- */}
+      {/* --- Section 9: Footer --- */}
       <footer className="bg-[#4A2C2A] text-[#FAF0E6]/80 py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Footer grid layout */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            {/* Logo & Copyright */}
+            {/* Column 1: Logo & Copyright */}
             <div className="md:col-span-1">
               <a href="#" className="text-lg font-bold font-serif text-[#FAF0E6] mb-2 block">
                 Executive Coffee
@@ -422,7 +540,7 @@ function App() {
                </div>
             </div>
 
-            {/* Quick Links */}
+            {/* Column 2: Quick Links */}
             <div>
               <h5 className="font-semibold text-[#FAF0E6] mb-3 font-serif tracking-wide">Quick Links</h5>
               <ul className="space-y-2 text-sm">
@@ -434,7 +552,7 @@ function App() {
               </ul>
             </div>
 
-            {/* Contact Details */}
+            {/* Column 3: Contact Details */}
             <div>
               <h5 className="font-semibold text-[#FAF0E6] mb-3 font-serif tracking-wide">Contact Us</h5>
               <ul className="space-y-2 text-sm">
@@ -473,13 +591,15 @@ function App() {
               </ul>
             </div>
 
-            {/* Social Media */}
+            {/* Column 4: Social Media Links */}
             <div>
               <h5 className="font-semibold text-[#FAF0E6] mb-3 font-serif tracking-wide">Follow Us</h5>
               <div className="flex space-x-4">
+                {/* LinkedIn Icon Link */}
                 <a href="#" aria-label="LinkedIn" className="text-[#FAF0E6]/80 hover:text-[#B08D57] transition-colors">
                   <Linkedin size={20} />
                 </a>
+                {/* Instagram Icon Link */}
                 <a href="#" aria-label="Instagram" className="text-[#FAF0E6]/80 hover:text-[#B08D57] transition-colors">
                   <Instagram size={20} />
                 </a>
@@ -488,8 +608,10 @@ function App() {
           </div>
         </div>
       </footer>
-    </div>
+
+    </div> // End of main container div
   );
 }
 
+// Export the App component as the default export
 export default App;
