@@ -37,6 +37,7 @@ const Products = () => {
   const { language } = useLanguage();
   const t = content[language].products;
   const p = content[language].productDetails;
+  const pEn = content.en.productDetails; // Access English product details
 
   const productCategories = [
     {
@@ -46,6 +47,7 @@ const Products = () => {
       imagePlaceholderStem: 'Ethiopian+Coffee+',
       icon: Coffee,
       bgImage: placeholderImages.categoryBgCoffee,
+      originalKey: 'coffee', // Added for mapping to English names
     },
     {
       title: t.sesameTitle,
@@ -54,6 +56,7 @@ const Products = () => {
       imagePlaceholderStem: 'Sesame+Seeds+',
       icon: Sun,
       bgImage: placeholderImages.categoryBgSesame,
+      originalKey: 'sesame', // Added for mapping to English names
     },
     {
       title: t.pulsesTitle,
@@ -62,6 +65,7 @@ const Products = () => {
       imagePlaceholderStem: 'Pulses+Legumes+',
       icon: Mountain, // Changed icon for variety
       bgImage: placeholderImages.categoryBgPulses,
+      originalKey: 'pulses', // Added for mapping to English names
     },
   ];
 
@@ -83,16 +87,23 @@ const Products = () => {
               </div>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {category.items.slice(0,4).map(item => ( // Show max 4 items per category for brevity
-                <ProductCard 
-                  key={item.id} 
-                  name={item.name} 
-                  description={item.description} 
-                  icon={item.icon} 
-                  tag={item.tag}
-                  imagePlaceholder={placeholderImages.productGeneric(category.imagePlaceholderStem, item.name)}
-                />
-              ))}
+              {category.items.slice(0,4).map(item => { // Show max 4 items per category for brevity
+                // Find the English item name for image generation
+                const englishCategoryItems = pEn[category.originalKey] || [];
+                const englishItem = englishCategoryItems.find(engItem => engItem.id === item.id);
+                const imageNameForPlaceholder = englishItem ? englishItem.name : item.name; // Fallback to current item name if not found
+
+                return (
+                  <ProductCard 
+                    key={item.id} 
+                    name={item.name} 
+                    description={item.description} 
+                    icon={item.icon} 
+                    tag={item.tag}
+                    imagePlaceholder={placeholderImages.productGeneric(category.imagePlaceholderStem, imageNameForPlaceholder)}
+                  />
+                );
+              })}
             </div>
              {category.items.length > 4 && (
               <div className="text-center mt-12">

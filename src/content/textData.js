@@ -179,7 +179,7 @@ export const content = {
         { id: 'humera_type', name: 'Humera Type Sesame', description: 'Premium whitish seeds, renowned for large size, sweet nutty flavor, and high oil content (50%+). Ideal for premium tahini and confectionary.', icon: Sun, tag: 'High Oil Yield' },
         { id: 'wollega_type', name: 'Wollega Type Sesame', description: 'Mixed/brownish seeds with a rich, distinctive nutty taste and excellent oil yield. Versatile for oil extraction and culinary uses.', icon: Sun, tag: 'Rich Flavor' },
         { id: 'hulled_sesame', name: 'Mechanically Hulled Sesame', description: 'Precisely hulled for a pristine, uniform appearance and enhanced purity. Perfect for bakery, toppings, and health foods.', icon: Zap, tag: 'Ready-to-Use' },
-        { id: 'organic_sesame', name: 'Organic Sesame Seeds', description: 'Cultivated without synthetic pesticides or fertilizers, offering a pure, natural taste. Certified organic options available.', icon: Leaf, tag: 'Certified Organic' },
+        { id: 'organic_sesame', name: 'Organic Sesame', description: 'Cultivated without synthetic pesticides or fertilizers, offering a pure, natural taste. Certified organic options available.', icon: Leaf, tag: 'Certified Organic' },
       ],
       pulses: [
         { id: 'red_kidney_beans', name: 'Red Kidney Beans (Dark/Light)', description: 'Rich in protein and fiber, with a robust flavor and firm texture. Excellent for chili, stews, and salads.', icon: Mountain, tag: 'Protein Powerhouse' },
@@ -246,11 +246,11 @@ export const content = {
     certifications: {
       title: '全球认可的卓越标准',
       logos: [
-        { alt: 'ISO 9001 质量管理体系认证', src: placeholderImages.certificationIsoZh, id: 'iso' },
-        { alt: '有机出口商认证', src: placeholderImages.certificationOrganicZh, id: 'organic' },
-        { alt: '公平贸易认证伙伴', src: placeholderImages.certificationFairTradeZh, id: 'fairtrade' },
-        { alt: '埃塞俄比亚出口促进局合作伙伴', src: placeholderImages.certificationEepaZh, id: 'eepa' },
-        { alt: '全球良好农业规范认证', src: placeholderImages.certificationGlobalGapZh, id: 'globalgap' },
+        { alt: 'ISO 9001 质量管理体系认证', src: placeholderImages.certificationIso, id: 'iso' },
+        { alt: '有机出口商认证', src: placeholderImages.certificationOrganic, id: 'organic' },
+        { alt: '公平贸易认证伙伴', src: placeholderImages.certificationFairTrade, id: 'fairtrade' },
+        { alt: '埃塞俄比亚出口促进局合作伙伴', src: placeholderImages.certificationEepa, id: 'eepa' },
+        { alt: '全球良好农业规范认证', src: placeholderImages.certificationGlobalGap, id: 'globalgap' },
       ]
     },
     testimonials: {
