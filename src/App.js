@@ -40,6 +40,33 @@ const useLanguage = () => useContext(LanguageContext);
 
 // --- Content (Bilingual) ---
 // Enhanced content for more impact and storytelling
+
+const placeholderImages = {
+  logoLightBg: (text) => `https://placehold.co/180x55/1D4D4F/FFFFFF?text=${text}&font=Inter`,
+  logoDarkBg: (text) => `https://placehold.co/180x55/FFFFFF/1D4D4F?text=${text}&font=Inter`,
+  heroBackground: "https://placehold.co/1920x1280/2c3e50/ecf0f1?text=Lush+Ethiopian+Coffee+Plantation&font=Inter",
+  productGeneric: (category, name) => `https://placehold.co/400x300/A0AEC0/2D3748?text=${category}+${name.replace(/\s+/g, '+').substring(0,20)}&font=Inter`,
+  productImageUnavailable: "https://placehold.co/400x300/e2e8f0/94a3b8?text=Image+Unavailable",
+  sustainabilityHands: "https://placehold.co/600x450/38A169/FFFFFF?text=Sustainable+Ethiopian+Agriculture&font=Inter",
+  sustainabilityImageError: "https://placehold.co/600x450/e2e8f0/94a3b8?text=Image+Error",
+  certificationIso: "https://placehold.co/160x90/EBF4FF/1C3D5A?text=ISO+9001&font=Inter",
+  certificationOrganic: "https://placehold.co/160x90/EBF4FF/1C3D5A?text=Organic+Certified&font=Inter",
+  certificationFairTrade: "https://placehold.co/160x90/EBF4FF/1C3D5A?text=Fair+Trade&font=Inter",
+  certificationEepa: "https://placehold.co/160x90/EBF4FF/1C3D5A?text=EEPA+Partner&font=Inter",
+  certificationGlobalGap: "https://placehold.co/160x90/EBF4FF/1C3D5A?text=GlobalG.A.P.&font=Inter",
+  certificationIsoZh: "https://placehold.co/160x90/EBF4FF/1C3D5A?text=ISO+9001认证&font=Noto+Sans+SC",
+  certificationOrganicZh: "https://placehold.co/160x90/EBF4FF/1C3D5A?text=有机认证&font=Noto+Sans+SC",
+  certificationFairTradeZh: "https://placehold.co/160x90/EBF4FF/1C3D5A?text=公平贸易&font=Noto+Sans+SC",
+  certificationEepaZh: "https://placehold.co/160x90/EBF4FF/1C3D5A?text=EEPA伙伴&font=Noto+Sans+SC",
+  certificationGlobalGapZh: "https://placehold.co/160x90/EBF4FF/1C3D5A?text=GlobalG.A.P.&font=Noto+Sans+SC",
+  testimonialAvatarGeneric: (text) => `https://placehold.co/64x64/dbeafe/1e40af?text=${text}`,
+  testimonialAvatarError: "https://placehold.co/64x64/9ca3af/ffffff?text=User",
+  footerLogo: (text) => `https://placehold.co/200x60/FFFFFF/111827?text=${text}&font=Inter`,
+  categoryBgCoffee: "url('https://placehold.co/1200x400/4A3B31/E8D8C4?text=Aromatic+Coffee+Beans&font=Inter')",
+  categoryBgSesame: "url('https://placehold.co/1200x400/D4AC0D/FDFEFE?text=Golden+Sesame+Harvest&font=Inter')",
+  categoryBgPulses: "url('https://placehold.co/1200x400/588157/A3B18A?text=Nutrient-Rich+Pulses&font=Inter')",
+};
+
 const content = {
   en: {
     nav: {
@@ -94,11 +121,11 @@ const content = {
     certifications: {
       title: 'Globally Recognized Standards of Excellence',
       logos: [
-        { alt: 'ISO 9001 Certified Quality Management', src: 'https://placehold.co/160x90/EBF4FF/1C3D5A?text=ISO+9001&font=Inter', id: 'iso' },
-        { alt: 'Certified Organic Exporter', src: 'https://placehold.co/160x90/EBF4FF/1C3D5A?text=Organic+Certified&font=Inter', id: 'organic' },
-        { alt: 'Fair Trade Certified Partner', src: 'https://placehold.co/160x90/EBF4FF/1C3D5A?text=Fair+Trade&font=Inter', id: 'fairtrade' },
-        { alt: 'Ethiopian Export Promotion Agency Partner', src: 'https://placehold.co/160x90/EBF4FF/1C3D5A?text=EEPA+Partner&font=Inter', id: 'eepa' },
-        { alt: 'GlobalG.A.P. Certified Agriculture', src: 'https://placehold.co/160x90/EBF4FF/1C3D5A?text=GlobalG.A.P.&font=Inter', id: 'globalgap' },
+        { alt: 'ISO 9001 Certified Quality Management', src: placeholderImages.certificationIso, id: 'iso' },
+        { alt: 'Certified Organic Exporter', src: placeholderImages.certificationOrganic, id: 'organic' },
+        { alt: 'Fair Trade Certified Partner', src: placeholderImages.certificationFairTrade, id: 'fairtrade' },
+        { alt: 'Ethiopian Export Promotion Agency Partner', src: placeholderImages.certificationEepa, id: 'eepa' },
+        { alt: 'GlobalG.A.P. Certified Agriculture', src: placeholderImages.certificationGlobalGap, id: 'globalgap' },
       ]
     },
     testimonials: {
@@ -108,21 +135,21 @@ const content = {
           text: "Executive Export's Yirgachefe coffee is consistently exceptional. Their professionalism and reliable supply chain have made them an invaluable partner for our specialty roastery.",
           name: 'Isabelle Dubois',
           company: 'Le Café Select, Paris',
-          avatar: 'https://placehold.co/64x64/dbeafe/1e40af?text=ID',
+          avatar: placeholderImages.testimonialAvatarGeneric('ID'),
           stars: 5,
         },
         {
           text: "The quality of Humera sesame seeds from Executive Export has significantly elevated our tahini products. Their commitment to purity and ethical sourcing is commendable.",
           name: 'Kenji Tanaka',
           company: 'Artisan Foods Japan, Tokyo',
-          avatar: 'https://placehold.co/64x64/dbeafe/1e40af?text=KT',
+          avatar: placeholderImages.testimonialAvatarGeneric('KT'),
           stars: 5,
         },
         {
           text: "We rely on Executive Export for high-quality Ethiopian chickpeas and lentils. Their dedication to sustainable practices and farmer welfare aligns perfectly with our brand values.",
           name: 'Maria Rossi',
           company: 'Salute Organics, Rome',
-          avatar: 'https://placehold.co/64x64/dbeafe/1e40af?text=MR',
+          avatar: placeholderImages.testimonialAvatarGeneric('MR'),
           stars: 4.5,
         },
       ],
@@ -245,11 +272,11 @@ const content = {
     certifications: {
       title: '全球认可的卓越标准',
       logos: [
-        { alt: 'ISO 9001 质量管理体系认证', src: 'https://placehold.co/160x90/EBF4FF/1C3D5A?text=ISO+9001认证&font=Noto+Sans+SC', id: 'iso' },
-        { alt: '有机出口商认证', src: 'https://placehold.co/160x90/EBF4FF/1C3D5A?text=有机认证&font=Noto+Sans+SC', id: 'organic' },
-        { alt: '公平贸易认证伙伴', src: 'https://placehold.co/160x90/EBF4FF/1C3D5A?text=公平贸易&font=Noto+Sans+SC', id: 'fairtrade' },
-        { alt: '埃塞俄比亚出口促进局合作伙伴', src: 'https://placehold.co/160x90/EBF4FF/1C3D5A?text=EEPA伙伴&font=Noto+Sans+SC', id: 'eepa' },
-        { alt: '全球良好农业规范认证', src: 'https://placehold.co/160x90/EBF4FF/1C3D5A?text=GlobalG.A.P.&font=Noto+Sans+SC', id: 'globalgap' },
+        { alt: 'ISO 9001 质量管理体系认证', src: placeholderImages.certificationIsoZh, id: 'iso' },
+        { alt: '有机出口商认证', src: placeholderImages.certificationOrganicZh, id: 'organic' },
+        { alt: '公平贸易认证伙伴', src: placeholderImages.certificationFairTradeZh, id: 'fairtrade' },
+        { alt: '埃塞俄比亚出口促进局合作伙伴', src: placeholderImages.certificationEepaZh, id: 'eepa' },
+        { alt: '全球良好农业规范认证', src: placeholderImages.certificationGlobalGapZh, id: 'globalgap' },
       ]
     },
     testimonials: {
@@ -259,21 +286,21 @@ const content = {
           text: "卓越出口的耶加雪菲咖啡品质始终如一地出色。他们的专业精神和可靠的供应链使其成为我们精品烘焙坊不可或缺的合作伙伴。",
           name: '伊莎贝尔·杜波依斯',
           company: '巴黎 Le Café Select 咖啡馆',
-          avatar: 'https://placehold.co/64x64/dbeafe/1e40af?text=伊',
+          avatar: placeholderImages.testimonialAvatarGeneric('伊'),
           stars: 5,
         },
         {
           text: "卓越出口的胡梅拉芝麻品质显著提升了我们的芝麻酱产品。他们对纯度和道德采购的承诺值得称赞。",
           name: '田中健司',
           company: '东京 Artisan Foods Japan 公司',
-          avatar: 'https://placehold.co/64x64/dbeafe/1e40af?text=田',
+          avatar: placeholderImages.testimonialAvatarGeneric('田'),
           stars: 5,
         },
         {
           text: "我们依赖卓越出口提供高品质的埃塞俄比亚鹰嘴豆和扁豆。他们对可持续实践和农民福祉的奉献与我们的品牌价值观完美契合。",
           name: '玛利亚·罗西',
           company: '罗马 Salute Organics 公司',
-          avatar: 'https://placehold.co/64x64/dbeafe/1e40af?text=玛',
+          avatar: placeholderImages.testimonialAvatarGeneric('玛'),
           stars: 4.5,
         },
       ],
@@ -434,7 +461,7 @@ const Header = () => {
             <div className="flex items-center justify-between h-20">
               <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }} className="flex items-center space-x-2">
                 <img 
-                    src={`https://placehold.co/180x55/${isScrolled || language === 'zh' ? '1D4D4F/FFFFFF' : 'FFFFFF/1D4D4F'}?text=${t.companyNameShort}&font=Inter`} 
+                    src={isScrolled || language === 'zh' ? placeholderImages.logoLightBg(t.companyNameShort) : placeholderImages.logoDarkBg(t.companyNameShort)}
                     alt={`${t.companyName} Logo`} 
                     className="h-10 sm:h-11 transition-all duration-300" 
                 />
@@ -498,7 +525,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-black/80"></div>
       <style jsx global>{`
         .hero-bg {
-          background-image: url('https://placehold.co/1920x1280/2c3e50/ecf0f1?text=Lush+Ethiopian+Coffee+Plantation&font=Inter');
+          background-image: url('${placeholderImages.heroBackground}');
           background-size: cover;
           background-position: center;
           background-attachment: fixed;
@@ -562,7 +589,7 @@ const ProductCard = ({ name, description, icon: Icon, tag, imagePlaceholder }) =
           src={imagePlaceholder} 
           alt={name} 
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          onError={(e) => e.target.src = 'https://placehold.co/400x300/e2e8f0/94a3b8?text=Image+Unavailable'}
+          onError={(e) => e.target.src = placeholderImages.productImageUnavailable}
         />
         <div className="absolute top-3 right-3 bg-red-600 text-white text-xs px-3 py-1.5 rounded-full font-semibold shadow-md tracking-wide">
           {tag}
@@ -594,7 +621,7 @@ const Products = () => {
       items: p.coffee,
       imagePlaceholderStem: 'Ethiopian+Coffee+',
       icon: Coffee,
-      bgImage: "url('https://placehold.co/1200x400/4A3B31/E8D8C4?text=Aromatic+Coffee+Beans&font=Inter')",
+      bgImage: placeholderImages.categoryBgCoffee,
     },
     {
       title: t.sesameTitle,
@@ -602,7 +629,7 @@ const Products = () => {
       items: p.sesame,
       imagePlaceholderStem: 'Sesame+Seeds+',
       icon: Sun,
-      bgImage: "url('https://placehold.co/1200x400/D4AC0D/FDFEFE?text=Golden+Sesame+Harvest&font=Inter')",
+      bgImage: placeholderImages.categoryBgSesame,
     },
     {
       title: t.pulsesTitle,
@@ -610,7 +637,7 @@ const Products = () => {
       items: p.pulses,
       imagePlaceholderStem: 'Pulses+Legumes+',
       icon: Mountain, // Changed icon for variety
-      bgImage: "url('https://placehold.co/1200x400/588157/A3B18A?text=Nutrient-Rich+Pulses&font=Inter')",
+      bgImage: placeholderImages.categoryBgPulses,
     },
   ];
 
@@ -639,7 +666,7 @@ const Products = () => {
                   description={item.description} 
                   icon={item.icon} 
                   tag={item.tag}
-                  imagePlaceholder={`https://placehold.co/400x300/A0AEC0/2D3748?text=${category.imagePlaceholderStem}${item.name.replace(/\s+/g, '+').substring(0,20)}&font=Inter`}
+                  imagePlaceholder={placeholderImages.productGeneric(category.imagePlaceholderStem, item.name)}
                 />
               ))}
             </div>
@@ -688,10 +715,10 @@ const Sustainability = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative rounded-xl shadow-2xl overflow-hidden group aspect-w-4 aspect-h-3">
             <img 
-              src="https://placehold.co/600x450/38A169/FFFFFF?text=Sustainable+Ethiopian+Agriculture&font=Inter" 
+              src={placeholderImages.sustainabilityHands}
               alt="Hands holding a young plant in fertile Ethiopian soil" 
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              onError={(e) => e.target.src = 'https://placehold.co/600x450/e2e8f0/94a3b8?text=Image+Error'}
+              onError={(e) => e.target.src = placeholderImages.sustainabilityImageError}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
             <div className="absolute bottom-6 left-6 text-white">
@@ -764,7 +791,7 @@ const TestimonialCard = ({ text, name, company, avatar, stars }) => {
       <div className="flex items-center mb-5">{renderStars()}</div>
       <p className="italic text-gray-700 mb-6 leading-relaxed flex-grow text-lg">"{text}"</p>
       <div className="flex items-center mt-auto pt-5 border-t border-gray-200">
-        <img src={avatar} alt={name} className="w-14 h-14 rounded-full mr-4 border-2 border-green-200 shadow-sm object-cover" onError={(e) => e.target.src = 'https://placehold.co/64x64/9ca3af/ffffff?text=User'}/>
+        <img src={avatar} alt={name} className="w-14 h-14 rounded-full mr-4 border-2 border-green-200 shadow-sm object-cover" onError={(e) => e.target.src = placeholderImages.testimonialAvatarError}/>
         <div>
           <h4 className="font-bold text-green-700 text-lg">{name}</h4>
           <p className="text-sm text-gray-500">{company}</p>
@@ -971,7 +998,7 @@ const Footer = () => {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
-             <img src={`https://placehold.co/200x60/FFFFFF/111827?text=${nav.companyNameShort}&font=Inter`} alt={`${nav.companyName} Logo`} className="h-11 mb-5" />
+             <img src={placeholderImages.footerLogo(nav.companyNameShort)} alt={`${nav.companyName} Logo`} className="h-11 mb-5" />
             <p className="text-sm leading-relaxed">{t.companyDesc}</p>
           </div>
           <div>
