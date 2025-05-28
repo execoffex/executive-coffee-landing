@@ -59,14 +59,14 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-green-50 to-white">
+    <section id="contact" className="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-green-50 to-white">
       <div className="container mx-auto">
         <SectionTitle title={t.title} subtitle={t.intro} />
-        <div className="grid lg:grid-cols-5 gap-10 xl:gap-16 items-start">
+        <div className="grid lg:grid-cols-5 gap-6 md:gap-8 lg:gap-10 xl:gap-16 items-start">
           {/* Contact Form */}
-          <div className="lg:col-span-3 bg-white p-8 sm:p-10 rounded-xl shadow-2xl">
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-6">
+          <div className="lg:col-span-3 bg-white p-5 sm:p-8 lg:p-10 rounded-xl shadow-2xl">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
+              <div className="grid sm:grid-cols-2 gap-5 md:gap-6">
                 <InputField label={t.form.name} name="name" type="text" required />
                 <InputField label={t.form.company} name="company" type="text" />
               </div>
@@ -74,7 +74,11 @@ const Contact = () => {
               <InputField label={t.form.phone} name="phone" type="tel" />
               <div>
                 <label htmlFor="interest" className="block text-sm font-medium text-gray-700 mb-1">{t.form.interest}</label>
-                <select id="interest" name="interest" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-shadow bg-white appearance-none">
+                <select 
+                  id="interest" 
+                  name="interest" 
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-shadow bg-white appearance-none text-base"
+                >
                   <option value="">{t.form.selectProduct}</option>
                   {Object.keys(content[language].productDetails).map(key => (
                      content[language].productDetails[key].slice(0,1).map(prod => <option key={prod.id} value={prod.id}>{prod.name}</option>)
@@ -84,41 +88,54 @@ const Contact = () => {
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">{t.form.message}</label>
-                <textarea id="message" name="message" rows="5" required className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-shadow"></textarea>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  rows="4" 
+                  required 
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-shadow text-base"
+                ></textarea>
               </div>
-              <CtaButton type="submit" variant="primary" className="w-full !py-3.5 text-lg">
-                <Send size={20} className="mr-2" /> {t.form.sendMessage}
+              <CtaButton type="submit" variant="primary" className="w-full !py-3.5 text-base md:text-lg">
+                <Send size={19} className="mr-2" /> {t.form.sendMessage}
               </CtaButton>
               <div className="form-status text-sm mt-2 h-5"></div> {/* For status messages */}
             </form>
           </div>
           
           {/* Contact Information */}
-          <div className="lg:col-span-2 bg-green-700 text-white p-8 sm:p-10 rounded-xl shadow-2xl h-full">
-            <h3 className="text-2xl sm:text-3xl font-bold mb-8">{t.info.title}</h3>
-            <div className="space-y-6">
+          <div className="lg:col-span-2 bg-green-700 text-white p-5 sm:p-8 lg:p-10 rounded-xl shadow-2xl h-full mt-8 lg:mt-0">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 md:mb-8">{t.info.title}</h3>
+            <div className="space-y-5 md:space-y-6">
               {contactInfoItems.map(item => (
                 <div key={item.title} className="flex items-start">
-                  <div className="bg-white/20 p-3.5 rounded-full mr-5 mt-1 shadow">
-                    <item.icon size={22} />
+                  <div className="bg-white/20 p-3 rounded-full mr-4 md:mr-5 mt-0.5 shadow-sm shrink-0">
+                    <item.icon size={20} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-lg mb-0.5">{item.title}</h4>
+                    <h4 className="font-semibold text-base md:text-lg mb-0.5">{item.title}</h4>
                     {item.href ? (
-                      <a href={item.href} className="text-green-100 hover:text-yellow-300 transition-colors break-all">{item.text}</a>
+                      <a href={item.href} className="text-green-100 hover:text-yellow-300 transition-colors break-all text-sm md:text-base">
+                        {item.text}
+                      </a>
                     ) : (
-                      <p className="text-green-100 break-words">{item.text}</p>
+                      <p className="text-green-100 break-words text-sm md:text-base">{item.text}</p>
                     )}
                   </div>
                 </div>
               ))}
             </div>
-            <div className="mt-10 pt-8 border-t border-white/20">
-              <h4 className="font-semibold text-lg mb-4">{t.info.follow}</h4>
-              <div className="flex space-x-4">
+            <div className="mt-8 pt-8 border-t border-white/20">
+              <h4 className="font-semibold text-base md:text-lg mb-4">{t.info.follow}</h4>
+              <div className="flex flex-wrap gap-3">
                 {socialLinks.map(link => (
-                  <a key={link.label} href={link.href} aria-label={link.label} className="bg-white/20 hover:bg-yellow-400 text-white hover:text-green-800 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-sm hover:shadow-md">
-                    <link.icon size={20} />
+                  <a 
+                    key={link.label} 
+                    href={link.href} 
+                    aria-label={link.label} 
+                    className="bg-white/20 hover:bg-yellow-400 text-white hover:text-green-800 w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 shadow-sm hover:shadow-md"
+                  >
+                    <link.icon size={18} />
                   </a>
                 ))}
               </div>
