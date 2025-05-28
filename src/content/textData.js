@@ -1,9 +1,9 @@
 import { Coffee, Leaf, Sun, Mountain, Zap } from 'lucide-react';
 
 export const placeholderImages = {
-  logoLightBg: (text) => `/images/logo_light_${text.toLowerCase().replace(/\s+/g, '_')}.png`,
-  logoDarkBg: (text) => `/images/logo_dark_${text.toLowerCase().replace(/\s+/g, '_')}.png`,
-  heroBackground: "/images/hero_background_plantation.jpg",
+  logoLightBg: (text) => `${process.env.PUBLIC_URL}/images/logo_light_${text.toLowerCase().replace(/\s+/g, '_')}.png`,
+  logoDarkBg: (text) => `${process.env.PUBLIC_URL}/images/logo_dark_${text.toLowerCase().replace(/\s+/g, '_')}.png`,
+  heroBackground: `${process.env.PUBLIC_URL}/images/hero_background_plantation.jpg`,
   productGeneric: (categoryStem, productName) => {
     let simpleCategory = categoryStem.toLowerCase()
       .replace('ethiopian', '')
@@ -18,27 +18,27 @@ export const placeholderImages = {
       .replace(/\s+/g, '_')
       .replace(/[^\w_]/g, '')
       .substring(0, 30);
-    return `/images/product_${simpleCategory}_${simpleName}.png`;
+    return `${process.env.PUBLIC_URL}/images/product_${simpleCategory}_${simpleName}.png`;
   },
-  productImageUnavailable: "/images/product_image_unavailable.png",
-  sustainabilityHands: "/images/sustainability_hands_plant.jpg",
-  sustainabilityImageError: "/images/sustainability_image_error.png",
-  certificationIso: "/images/certification_iso_9001.png",
-  certificationOrganic: "/images/certification_organic.png",
-  certificationFairTrade: "/images/certification_fair_trade.png",
-  certificationEepa: "/images/certification_eepa_partner.png",
-  certificationGlobalGap: "/images/certification_global_gap.png",
-  certificationIsoZh: "/images/certification_iso_9001_zh.png",
-  certificationOrganicZh: "/images/certification_organic_zh.png",
-  certificationFairTradeZh: "/images/certification_fair_trade_zh.png",
-  certificationEepaZh: "/images/certification_eepa_partner_zh.png",
-  certificationGlobalGapZh: "/images/certification_global_gap_zh.png",
-  testimonialAvatarGeneric: (text) => `/images/avatar_${text.toLowerCase().replace(/\s+/g, '')}.png`,
-  testimonialAvatarError: "/images/avatar_user_default.png",
-  footerLogo: (text) => `/images/footer_logo_${text.toLowerCase().replace(/\s+/g, '_')}.png`,
-  categoryBgCoffee: "url('/images/category_bg_coffee.jpg')",
-  categoryBgSesame: "url('/images/category_bg_sesame.jpg')",
-  categoryBgPulses: "url('/images/category_bg_pulses.jpg')",
+  productImageUnavailable: `${process.env.PUBLIC_URL}/images/product_image_unavailable.png`,
+  sustainabilityHands: `${process.env.PUBLIC_URL}/images/sustainability_hands_plant.jpg`,
+  sustainabilityImageError: `${process.env.PUBLIC_URL}/images/sustainability_image_error.png`,
+  certificationIso: `${process.env.PUBLIC_URL}/images/certification_iso_9001.png`,
+  certificationOrganic: `${process.env.PUBLIC_URL}/images/certification_organic.png`,
+  certificationFairTrade: `${process.env.PUBLIC_URL}/images/certification_fair_trade.png`,
+  certificationEepa: `${process.env.PUBLIC_URL}/images/certification_eepa_partner.png`,
+  certificationGlobalGap: `${process.env.PUBLIC_URL}/images/certification_global_gap.png`,
+  certificationIsoZh: `${process.env.PUBLIC_URL}/images/certification_iso_9001_zh.png`,
+  certificationOrganicZh: `${process.env.PUBLIC_URL}/images/certification_organic_zh.png`,
+  certificationFairTradeZh: `${process.env.PUBLIC_URL}/images/certification_fair_trade_zh.png`,
+  certificationEepaZh: `${process.env.PUBLIC_URL}/images/certification_eepa_partner_zh.png`,
+  certificationGlobalGapZh: `${process.env.PUBLIC_URL}/images/certification_global_gap_zh.png`,
+  testimonialAvatarGeneric: (text) => `${process.env.PUBLIC_URL}/images/avatar_${text.toLowerCase().replace(/\s+/g, '')}.png`,
+  testimonialAvatarError: `${process.env.PUBLIC_URL}/images/avatar_user_default.png`,
+  footerLogo: (text) => `${process.env.PUBLIC_URL}/images/footer_logo_${text.toLowerCase().replace(/\s+/g, '_')}.png`,
+  categoryBgCoffee: `url('${process.env.PUBLIC_URL}/images/category_bg_coffee.jpg')`,
+  categoryBgSesame: `url('${process.env.PUBLIC_URL}/images/category_bg_sesame.jpg')`,
+  categoryBgPulses: `url('${process.env.PUBLIC_URL}/images/category_bg_pulses.jpg')`,
 };
 
 export const content = {

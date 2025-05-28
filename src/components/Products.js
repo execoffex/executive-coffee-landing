@@ -86,7 +86,7 @@ const Products = () => {
                 <p className="text-gray-200 text-lg leading-relaxed text-shadow-sm">{category.description}</p>
               </div>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8">
               {category.items.slice(0, 4).map(item => { // Show max 4 items per category for brevity
                 // Find the English item name for image generation
                 const englishCategoryItems = pEn[category.originalKey] || [];

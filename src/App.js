@@ -24,6 +24,15 @@ import Footer from './components/Footer';
 function App() {
   // Effect for observing section animations
   useEffect(() => {
+    // Immediately make all sections visible on small screens (mobile)
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) {
+      document.querySelectorAll('section[id]').forEach(section => {
+        section.classList.add('animate-section-visible');
+      });
+      return; // Exit early for mobile devices - no need for observer
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -31,7 +40,7 @@ function App() {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }); // Trigger a bit before fully in view
+    }, { threshold: 0.05, rootMargin: "0px 0px -10px 0px" }); // Lower threshold and smaller rootMargin for better mobile detection
 
     document.querySelectorAll('section[id]').forEach(section => { // Target sections with an ID
       section.classList.add('section-hidden'); // Initial state for animation
@@ -57,11 +66,19 @@ function App() {
 
           .section-hidden { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
           .animate-section-visible { opacity: 1; transform: translateY(0); }
+          
+          /* Make sure sections are visible on mobile regardless */
+          @media (max-width: 767px) {
+            .section-hidden {
+              opacity: 1 !important;
+              transform: translateY(0) !important;
+            }
+          }
 
           .animate-fadeInUp { animation: fadeInUpAnimation 0.8s ease-out forwards; }
           .animation-delay-300 { animation-delay: 0.3s; opacity:0; } /* Ensure opacity is 0 for delayed items */
           .animation-delay-600 { animation-delay: 0.6s; opacity:0; }
-
+          
           @keyframes fadeInUpAnimation {
             from { opacity: 0; transform: translateY(25px); }
             to { opacity: 1; transform: translateY(0); }
