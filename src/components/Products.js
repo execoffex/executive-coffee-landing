@@ -87,7 +87,7 @@ const Products = () => {
               </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8">
-              {category.items.slice(0, 4).map(item => { // Show max 4 items per category for brevity
+              {category.items.slice(0, 8).map(item => { // Show max 8 items per category for brevity
                 // Find the English item name for image generation
                 const englishCategoryItems = pEn[category.originalKey] || [];
                 const englishItem = englishCategoryItems.find(engItem => engItem.id === item.id);

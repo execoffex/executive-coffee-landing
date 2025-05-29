@@ -32,11 +32,11 @@ const Sustainability = () => {
       <div className="container mx-auto">
         <SectionTitle title={t.title} subtitle={t.intro} />
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="relative rounded-xl shadow-2xl overflow-hidden group aspect-w-4 aspect-h-3">
+          <div className="relative rounded-xl shadow-2xl overflow-hidden group aspect-[1024/680] max-h-[70vh] w-full">
             <img 
               src={placeholderImages.sustainabilityHands}
               alt="Hands holding a young plant in fertile Ethiopian soil" 
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
               onError={(e) => e.target.src = placeholderImages.sustainabilityImageError}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>

@@ -18,22 +18,31 @@ const Header = () => {
     { id: 'contact', label: t.contact },
   ];
 
+  // Effect for body scroll lock when mobile menu is open/closed
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    
-    // Prevent scrolling when mobile menu is open
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
-    
+    // Cleanup
     return () => {
-      window.removeEventListener('scroll', handleScroll);
       document.body.style.overflow = '';
     };
   }, [isMobileMenuOpen]);
+
+  // Effect for setting isScrolled based on window scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check for scroll position on load
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []); // Empty dependency array: runs once on mount, cleans up on unmount
 
   // Close mobile menu when window is resized to desktop size
   useEffect(() => {
@@ -71,9 +80,9 @@ const Header = () => {
             <div className="flex items-center justify-between h-16 sm:h-20">
               <a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }} className="flex items-center space-x-2">
                 <img 
-                    src={isScrolled || language === 'zh' ? placeholderImages.logoLightBg(t.companyNameShort) : placeholderImages.logoDarkBg(t.companyNameShort)}
+                    src={isScrolled ? placeholderImages.logoLightBg(t.companyNameShort) : placeholderImages.logoDarkBg(t.companyNameShort)}
                     alt={`${t.companyName} Logo`} 
-                    className="h-8 sm:h-10 md:h-11 transition-all duration-300" 
+                    className="h-12 sm:h-14 md:h-16 transition-all duration-300" 
                 />
               </a>
               <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
@@ -104,7 +113,7 @@ const Header = () => {
           {/* Mobile Menu */}
           <div 
             id="mobile-menu" 
-            className={`md:hidden fixed inset-0 top-[calc(4.5rem)] bg-white z-40 border-t border-gray-200 transition-transform duration-300 overflow-y-auto ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+            className={`md:hidden fixed inset-x-0 top-[6.625rem] sm:top-[7.625rem] bottom-0 bg-white z-[55] border-t border-gray-200 transition-transform duration-300 overflow-y-auto ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
           >
             <div className="px-3 pt-3 pb-4 space-y-1">
               {navLinks.map(link => (
@@ -121,8 +130,6 @@ const Header = () => {
           </div>
         </nav>
       </div>
-      {/* Add padding to compensate for fixed header */}
-      {isMobileMenuOpen && <div className="md:hidden" style={{ height: '100vh' }} />}
     </>
   );
 };
