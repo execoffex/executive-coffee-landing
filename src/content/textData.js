@@ -320,12 +320,15 @@ export const content = {
       sitemap: '网站地图',
     },
      productDetails: { // Chinese Product Details
-      coffee: [
-        { id: 'yirgachefe', name: '耶加雪菲 水洗 G1', description: '以其明亮的柑橘酸质、细腻的花香（茉莉、佛手柑）和干净的茶感而闻名。鉴赏家之选。', icon: Coffee, tag: '精品阿拉比卡' },
-        { id: 'sidamo_natural_g1', name: '西达摩 日晒 G1', description: '酒体饱满，带有浓郁的成熟浆果、黑巧克力和酒香复杂性。阳光下完美干燥。', icon: Coffee, tag: '传统日晒' },
-        { id: 'guji_washed_g1', name: '古吉 水洗 G1', description: '充满活力且复杂，常带有桃子、杏子和甜美花香，余味悠长宜人。', icon: Coffee, tag: '高海拔水洗' },
-        { id: 'limmu_washed_g1', name: '林姆 水洗 G1', description: '均衡度佳，带有独特的辛辣和酒香特征，常伴有甜橙和花香的底蕴。', icon: Coffee, tag: '森林咖啡' },
-        { id: 'lekempti_natural_g4', name: '莱坎普蒂 日晒 G4/5', description: '以其浓郁的果香（常有蓝莓味）、良好的醇厚度和原始的乡村魅力而闻名。非常适合拼配。', icon: Coffee, tag: '埃塞西部产区' },
+      pulses: [
+        { id: 'red_kidney_beans', name: '红芸豆 (深/浅)', description: '富含蛋白质和纤维，风味浓郁，质地紧实。非常适合制作辣椒酱、炖菜和沙拉。', icon: Mountain, tag: '蛋白质宝库' },
+        { id: 'white_pea_beans', name: '白豌豆 (海军豆)', description: '小巧，椭圆形，口感细腻。味道温和，是焗豆、汤和砂锅菜的理想选择。提供多种等级。', icon: Mountain, tag: '多用途主食' },
+        { id: 'green_mung_beans', name: '绿豆', description: '小巧玲珑，用途广泛，易于消化。常用于发豆芽、煲汤、炖菜和亚洲甜点。', icon: Mountain, tag: '营养密集' },
+        { id: 'soybeans_food_feed', name: '大豆 (食品/饲料级)', description: '高蛋白豆类，用途广泛，从豆腐、豆浆到动物饲料。提供非转基因选项。', icon: Mountain, tag: '植物蛋白' },
+        { id: 'chickpeas_desi_kabuli', name: '鹰嘴豆 (迪西/卡布里)', description: '坚果风味，质地紧实。是制作鹰嘴豆泥、咖喱、沙拉和零食的必备品。提供各种尺寸。', icon: Mountain, tag: '全球热门' },        
+        { id: 'faba_beans', name: '蚕豆', description: '传统的埃塞俄比亚主食，营养价值高，带有泥土气息和微甜。各种尺寸可选。', icon: Mountain, tag: '古老谷物' },
+        { id: 'red_speckled_kidney', name: '红花芸豆', description: '外观诱人，风味浓郁，带有泥土气息。煮熟后能很好地保持形状。非常适合煲汤和传统菜肴。', icon: Mountain, tag: '色彩丰富 风味佳' },
+        { id: 'black_cumin_seeds', name: '黑小茴香籽 (黑种草籽)', description: '气味辛辣，略带苦味，具有多种烹饪和传统药用价值。纯度高。', icon: Zap, tag: '香料与健康' },
       ],
       sesame: [
         { id: 'humera_type', name: '胡梅拉型芝麻', description: '优质白色种子，以颗粒大、味道香甜、坚果风味和高含油量（50%以上）而闻名。是优质芝麻酱和糖果的理想选择。', icon: Sun, tag: '高油产率' },
@@ -333,16 +336,13 @@ export const content = {
         { id: 'hulled_sesame', name: '机械去皮芝麻', description: '精确去皮，外观洁净均匀，纯度更高。非常适合烘焙、配料和健康食品。', icon: Zap, tag: '即用型' },
         { id: 'organic_sesame', name: '有机芝麻', description: '种植过程中不使用合成农药或化肥，提供纯净天然的味道。可提供有机认证选项。', icon: Leaf, tag: '有机认证' },
       ],
-      pulses: [
-        { id: 'red_kidney_beans', name: '红芸豆 (深/浅)', description: '富含蛋白质和纤维，风味浓郁，质地紧实。非常适合制作辣椒酱、炖菜和沙拉。', icon: Mountain, tag: '蛋白质宝库' },
-        { id: 'white_pea_beans', name: '白豌豆 (海军豆)', description: '小巧，椭圆形，口感细腻。味道温和，是焗豆、汤和砂锅菜的理想选择。提供多种等级。', icon: Mountain, tag: '多用途主食' },
-        { id: 'chickpeas_desi_kabuli', name: '鹰嘴豆 (迪西/卡布里)', description: '坚果风味，质地紧实。是制作鹰嘴豆泥、咖喱、沙拉和零食的必备品。提供各种尺寸。', icon: Mountain, tag: '全球热门' },
-        { id: 'green_mung_beans', name: '绿豆', description: '小巧玲珑，用途广泛，易于消化。常用于发豆芽、煲汤、炖菜和亚洲甜点。', icon: Mountain, tag: '营养密集' },
-        { id: 'faba_beans', name: '蚕豆', description: '传统的埃塞俄比亚主食，营养价值高，带有泥土气息和微甜。各种尺寸可选。', icon: Mountain, tag: '古老谷物' },
-        { id: 'soybeans_food_feed', name: '大豆 (食品/饲料级)', description: '高蛋白豆类，用途广泛，从豆腐、豆浆到动物饲料。提供非转基因选项。', icon: Mountain, tag: '植物蛋白' },
-        { id: 'red_speckled_kidney', name: '红花芸豆', description: '外观诱人，风味浓郁，带有泥土气息。煮熟后能很好地保持形状。非常适合煲汤和传统菜肴。', icon: Mountain, tag: '色彩丰富 风味佳' },
-        { id: 'black_cumin_seeds', name: '黑小茴香籽 (黑种草籽)', description: '气味辛辣，略带苦味，具有多种烹饪和传统药用价值。纯度高。', icon: Zap, tag: '香料与健康' },
-      ],
+      coffee: [
+        { id: 'yirgachefe', name: '耶加雪菲 水洗 G1', description: '以其明亮的柑橘酸质、细腻的花香（茉莉、佛手柑）和干净的茶感而闻名。鉴赏家之选。', icon: Coffee, tag: '精品阿拉比卡' },
+        { id: 'sidamo_natural_g1', name: '西达摩 日晒 G1', description: '酒体饱满，带有浓郁的成熟浆果、黑巧克力和酒香复杂性。阳光下完美干燥。', icon: Coffee, tag: '传统日晒' },
+        { id: 'guji_washed_g1', name: '古吉 水洗 G1', description: '充满活力且复杂，常带有桃子、杏子和甜美花香，余味悠长宜人。', icon: Coffee, tag: '高海拔水洗' },
+        { id: 'limmu_washed_g1', name: '林姆 水洗 G1', description: '均衡度佳，带有独特的辛辣和酒香特征，常伴有甜橙和花香的底蕴。', icon: Coffee, tag: '森林咖啡' },
+        // { id: 'lekempti_natural_g4', name: '莱坎普蒂 日晒 G4/5', description: '以其浓郁的果香（常有蓝莓味）、良好的醇厚度和原始的乡村魅力而闻名。非常适合拼配。', icon: Coffee, tag: '埃塞西部产区' },
+      ]
     }
   }
 }; 
