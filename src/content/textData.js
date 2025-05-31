@@ -323,12 +323,12 @@ export const content = {
       pulses: [
         { id: 'red_kidney_beans', name: '红芸豆 (深/浅)', description: '富含蛋白质和纤维，风味浓郁，质地紧实。非常适合制作辣椒酱、炖菜和沙拉。', icon: Mountain, tag: '蛋白质宝库' },
         { id: 'black_beans', name: '黑豆', description: '富含抗氧化剂，可保护人体细胞，降低患心脏病和癌症等疾病的风险。', icon: Mountain, tag: '抗氧化剂宝库' },
-        { id: 'white_pea_beans', name: '白豌豆 (海军豆)', description: '小巧，椭圆形，口感细腻。味道温和，是焗豆、汤和砂锅菜的理想选择。提供多种等级。', icon: Mountain, tag: '多用途主食' },
         { id: 'green_mung_beans', name: '绿豆', description: '小巧玲珑，用途广泛，易于消化。常用于发豆芽、煲汤、炖菜和亚洲甜点。', icon: Mountain, tag: '营养密集' },
         { id: 'soybeans_food_feed', name: '大豆 (食品/饲料级)', description: '高蛋白豆类，用途广泛，从豆腐、豆浆到动物饲料。提供非转基因选项。', icon: Mountain, tag: '植物蛋白' },
+        { id: 'red_speckled_kidney', name: '红花芸豆', description: '外观诱人，风味浓郁，带有泥土气息。煮熟后能很好地保持形状。非常适合煲汤和传统菜肴。', icon: Mountain, tag: '色彩丰富 风味佳' },
+        { id: 'white_pea_beans', name: '白豌豆 (海军豆)', description: '小巧，椭圆形，口感细腻。味道温和，是焗豆、汤和砂锅菜的理想选择。提供多种等级。', icon: Mountain, tag: '多用途主食' },
         { id: 'chickpeas_desi_kabuli', name: '鹰嘴豆 (迪西/卡布里)', description: '坚果风味，质地紧实。是制作鹰嘴豆泥、咖喱、沙拉和零食的必备品。提供各种尺寸。', icon: Mountain, tag: '全球热门' },        
         { id: 'faba_beans', name: '蚕豆', description: '传统的埃塞俄比亚主食，营养价值高，带有泥土气息和微甜。各种尺寸可选。', icon: Mountain, tag: '古老谷物' },
-        { id: 'red_speckled_kidney', name: '红花芸豆', description: '外观诱人，风味浓郁，带有泥土气息。煮熟后能很好地保持形状。非常适合煲汤和传统菜肴。', icon: Mountain, tag: '色彩丰富 风味佳' },
         { id: 'black_cumin_seeds', name: '黑小茴香籽 (黑种草籽)', description: '气味辛辣，略带苦味，具有多种烹饪和传统药用价值。纯度高。', icon: Zap, tag: '香料与健康' },
       ],
       sesame: [
