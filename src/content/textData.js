@@ -18,7 +18,7 @@ export const placeholderImages = {
       .replace(/\s+/g, '_')
       .replace(/[^\w_]/g, '')
       .substring(0, 30);
-    return `${process.env.PUBLIC_URL}/images/product_${simpleCategory}_${simpleName}.png`;
+    return `${process.env.PUBLIC_URL}/images/product_${simpleCategory}_${simpleName}.jpg`;
   },
   productImageUnavailable: `${process.env.PUBLIC_URL}/images/product_image_unavailable.png`,
   sustainabilityHands: `${process.env.PUBLIC_URL}/images/sustainability_hands_plant.jpg`,
@@ -26,13 +26,13 @@ export const placeholderImages = {
   certificationIso: `${process.env.PUBLIC_URL}/images/certification_iso_9001.png`,
   certificationOrganic: `${process.env.PUBLIC_URL}/images/certification_organic.png`,
   certificationFairTrade: `${process.env.PUBLIC_URL}/images/certification_fair_trade.png`,
-  certificationEepa: `${process.env.PUBLIC_URL}/images/certification_eepa_partner.png`,
-  certificationGlobalGap: `${process.env.PUBLIC_URL}/images/certification_global_gap.png`,
+  certificationEepa: `${process.env.PUBLIC_URL}/images/certification_eepa_partner.jpg`,
+  certificationGlobalGap: `${process.env.PUBLIC_URL}/images/certification_global_gap.jpg`,
   certificationIsoZh: `${process.env.PUBLIC_URL}/images/certification_iso_9001_zh.png`,
   certificationOrganicZh: `${process.env.PUBLIC_URL}/images/certification_organic_zh.png`,
   certificationFairTradeZh: `${process.env.PUBLIC_URL}/images/certification_fair_trade_zh.png`,
-  certificationEepaZh: `${process.env.PUBLIC_URL}/images/certification_eepa_partner_zh.png`,
-  certificationGlobalGapZh: `${process.env.PUBLIC_URL}/images/certification_global_gap_zh.png`,
+  certificationEepaZh: `${process.env.PUBLIC_URL}/images/certification_eepa_partner_zh.jpg`,
+  certificationGlobalGapZh: `${process.env.PUBLIC_URL}/images/certification_global_gap_zh.jpg`,
   testimonialAvatarGeneric: (text) => `${process.env.PUBLIC_URL}/images/avatar_${text.toLowerCase().replace(/\s+/g, '')}.png`,
   testimonialAvatarError: `${process.env.PUBLIC_URL}/images/avatar_user_default.png`,
   footerLogo: (text) => `${process.env.PUBLIC_URL}/images/footer_logo_${text.toLowerCase().replace(/\s+/g, '_')}.png`,
@@ -322,6 +322,7 @@ export const content = {
      productDetails: { // Chinese Product Details
       pulses: [
         { id: 'red_kidney_beans', name: '红芸豆 (深/浅)', description: '富含蛋白质和纤维，风味浓郁，质地紧实。非常适合制作辣椒酱、炖菜和沙拉。', icon: Mountain, tag: '蛋白质宝库' },
+        { id: 'black_beans', name: '黑豆', description: '富含抗氧化剂，可保护人体细胞，降低患心脏病和癌症等疾病的风险。', icon: Mountain, tag: '抗氧化剂宝库' },
         { id: 'white_pea_beans', name: '白豌豆 (海军豆)', description: '小巧，椭圆形，口感细腻。味道温和，是焗豆、汤和砂锅菜的理想选择。提供多种等级。', icon: Mountain, tag: '多用途主食' },
         { id: 'green_mung_beans', name: '绿豆', description: '小巧玲珑，用途广泛，易于消化。常用于发豆芽、煲汤、炖菜和亚洲甜点。', icon: Mountain, tag: '营养密集' },
         { id: 'soybeans_food_feed', name: '大豆 (食品/饲料级)', description: '高蛋白豆类，用途广泛，从豆腐、豆浆到动物饲料。提供非转基因选项。', icon: Mountain, tag: '植物蛋白' },
